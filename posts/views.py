@@ -1,5 +1,6 @@
 """posts views"""
 # django
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 # utilities
 from datetime import datetime
@@ -21,7 +22,7 @@ posts = [
     }
 ]
 
-
+@login_required
 def list_posts(request):
     """listing existing posts"""
 
