@@ -12,6 +12,9 @@ from users.models import Profile
 #exceptions
 from django.db.utils import IntegrityError
 
+
+
+
 def login_view(request):
     """login view"""
     if request.method == 'POST':
@@ -65,3 +68,8 @@ def signup_view(request):
 
 
     return render(request, 'users/signup.html')
+
+
+def update_profile(request):
+    """update users profile view"""
+    return render(request, 'users/update_profile.html')
