@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg fixed-top" id="main-navbar">
     <div class="container">
 
-        <a class="navbar-brand pr-5" style="border-right: 1px solid #efefef;" href="">
+        <a class="navbar-brand pr-5" style="border-right: 1px solid #efefef;" href="{% url "feed" %}">
             <img src="{% static "img/instagram.png" %}" height="45" class="d-inline-block align-top"/>
         </a>
 
@@ -10,20 +10,24 @@
             <ul class="navbar-nav mr-auto">
 
                 <li class="nav-item">
-                    <a href="">
-                        <img src="{% static 'img/default-profile.png' %}" height="35" class="d-inline-block align-top rounded-circle"/>
+                    <a href="{% url "update_profile" %}">
+                        {% if profile.picture %}
+                        <img src="{{ profile.picture.url }}" class="rounded-circle" height="50" />
+                    {% else%}
+                        <img src="{% static 'img/default-profile.png' %}" class="rounded-circle" height="50" />
+                    {% endif %}
                     </a>
                 </li>
 
                 <li class="nav-item nav-icon">
-                    <a href="">
-                        <i class="fas fa-plus"></i>
+                    <a href="{% url "create_post" %}"> 
+                        <i class="fas fa-plus"  height="50"></i>
                     </a>
                 </li>
 
                 <li class="nav-item nav-icon">
                     <a href="{% url "logout" %}">
-                        <i class="fas fa-sign-out-alt"></i>
+                        <i class="fas fa-sign-out-alt"  height="50"></i>
                     </a>
                 </li>
 
