@@ -1,4 +1,4 @@
-"""platzigram views"""
+"""instagram views"""
 """django"""
 from django.http import HttpResponse
 """utilities"""
@@ -40,7 +40,7 @@ def say_hi(request, name, age):
     if age < 12:
         message = 'sorry {} you are not allowed to be here'.format(name)
     else:
-        message = 'Hello {}! Welcome to platzigram'.format(name)
+        message = 'Hello {}! Welcome to instagram'.format(name)
 
     data = {
         'status':'ok',
