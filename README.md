@@ -1,5 +1,5 @@
 # Instagram
-an instagram web app made with Django
+an instagram-like web app made with Django
 
 ## Installation
 
@@ -17,7 +17,7 @@ python3 manage.py runserver
 ```
 
 ## About the project
-> its really fun and functionall
+> its really fun and functional
 > you can **create** your own profile, 
 > **edit** your info, 
 > **upload** new cool posts, 
