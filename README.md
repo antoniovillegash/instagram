@@ -18,13 +18,13 @@ python3 manage.py runserver
 
 ## About the project
 > its really fun and functionall
-> you can **create** your own profile
-> **edit** your info
-> **upload** new cool posts 
+> you can **create** your own profile, 
+> **edit** your info, 
+> **upload** new cool posts, 
 > all in one app
 
 ### Feed
-see your posts in the feed section
+see your posts on the feed section
 
 [![screenshot](https://raw.githubusercontent.com/antoniovillegash/instagram/main/screenshots/Screenshot%20from%202020-12-31%2013-58-33.png)]()
 
