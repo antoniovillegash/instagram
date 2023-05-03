@@ -2,6 +2,7 @@
 # django
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseForbidden, FileResponse
 
 #forms
 from posts.forms import PostForm
@@ -64,3 +65,46 @@ def create_post(request):
         }
     )
 
+
+
+
+
+
+@login_required
+def mostrar_documento_protegido(request, path):
+    """
+    When trying to access :
+    myproject.com/media/uploads/passport.png
+
+    If access is authorized, the request will be redirected to
+    myproject.com/protected/media/uploads/passport.png
+
+    This special URL will be handle by nginx we the help of X-Accel
+    LINK: https://b0uh.github.io/protect-django-media-files-per-user-basis-with-nginx.html
+    """
+    access_granted = False  
+    try:
+        sessionid = request.session.session_key
+        user = request.user
+        # Usuario admin de Django
+
+        if user.is_authenticated:
+            print('---------------')
+            print('usuario es admin (staff) y tiene acceso')
+            access_granted = True
+
+        if access_granted:
+            print('Acceso permitido')
+            response = HttpResponse()
+            # Content-type will be detected by nginx
+            del response['Content-Type']
+            print('/media/' + path)
+            response['X-Accel-Redirect'] = '/media/' + path
+            return response
+        else:
+            return HttpResponseForbidden('Not authorized to access this media.')
+
+    except Exception as err:
+        print(err)
+        return HttpResponseForbidden('Error al acceder al recurso.')
+        

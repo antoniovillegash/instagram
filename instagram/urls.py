@@ -3,7 +3,7 @@
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import path
+from django.urls import path, re_path
 
 
 from instagram.views import views as local_views
@@ -24,6 +24,7 @@ urlpatterns = [
     path('users/login/', users_views.login_view, name='login'),
     path('users/logout/', users_views.logout_view, name='logout'),
     path('users/signup/', users_views.signup_view, name='signup'),
-    path('users/me/profile/', users_views.update_profile, name='update_profile' )
+    path('users/me/profile/', users_views.update_profile, name='update_profile' ),
+    #re_path(r'^media/(?P<path>.*)', posts_views.mostrar_documento_protegido, name='serve_protected_document'),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
