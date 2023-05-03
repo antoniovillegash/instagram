@@ -19,4 +19,4 @@ class Post(models.Model):
 
     def __str__(self):
         """return title and username"""
-        return '{} by @{}'.format(self.title, self.username)
+        return '{} by @{}'.format(self.title, self.user.username)
