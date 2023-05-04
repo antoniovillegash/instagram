@@ -1,6 +1,9 @@
 # Instagram
 an instagram-like web app made with Django
 
+## Protect media files using nginx
+Click [here](./DOCS/proteger-archivos-estaticos.md) for further instructions on how to protect static files using nginx 
+
 ## Installation
 
 ```bash

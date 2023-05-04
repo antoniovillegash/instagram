@@ -25,6 +25,6 @@ urlpatterns = [
     path('users/logout/', users_views.logout_view, name='logout'),
     path('users/signup/', users_views.signup_view, name='signup'),
     path('users/me/profile/', users_views.update_profile, name='update_profile' ),
-    #re_path(r'^media/(?P<path>.*)', posts_views.mostrar_documento_protegido, name='serve_protected_document'),
+    re_path(r'^media/(?P<path>.*)', posts_views.mostrar_documento_protegido, name='serve_protected_document'),
     
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

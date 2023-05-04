@@ -82,24 +82,20 @@ def mostrar_documento_protegido(request, path):
     This special URL will be handle by nginx we the help of X-Accel
     LINK: https://b0uh.github.io/protect-django-media-files-per-user-basis-with-nginx.html
     """
-    access_granted = False  
+    access_granted = False
     try:
-        sessionid = request.session.session_key
+        #sessionid = request.session.session_key
         user = request.user
         # Usuario admin de Django
 
         if user.is_authenticated:
-            print('---------------')
-            print('usuario es admin (staff) y tiene acceso')
             access_granted = True
 
         if access_granted:
-            print('Acceso permitido')
             response = HttpResponse()
             # Content-type will be detected by nginx
-            del response['Content-Type']
-            print('/media/' + path)
-            response['X-Accel-Redirect'] = '/media/' + path
+            response['Content-Type'] = ''
+            response['X-Accel-Redirect'] = '/protectedMedia/' + path
             return response
         else:
             return HttpResponseForbidden('Not authorized to access this media.')
